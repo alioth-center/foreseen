@@ -1,0 +1,14 @@
+# IDEA Files
+.idea/
+
+# Macos Files
+.DS_Store
+
+# Logs
+log/
+
+# Production Config
+config/config.yaml
+
+# Git diff
+*.diff
