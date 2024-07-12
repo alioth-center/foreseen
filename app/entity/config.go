@@ -16,8 +16,9 @@ func init() {
 }
 
 type Config struct {
-	AppID     string `yaml:"app_id"`
-	AppSecret string `yaml:"app_secret"`
-	Token     string `yaml:"token"`
-	LogDir    string `yaml:"log_dir"`
+	AppID         string `yaml:"app_id"`
+	AppSecret     string `yaml:"app_secret"`
+	Token         string `yaml:"token"`
+	LogDir        string `yaml:"log_dir"`
+	DefaultChatID string `yaml:"default_chat_id"`
 }

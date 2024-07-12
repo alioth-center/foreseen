@@ -1,6 +1,7 @@
 package router
 
 import (
+	"encoding/json"
 	"github.com/alioth-center/foreseen/app/api"
 	"github.com/alioth-center/foreseen/app/entity"
 	"github.com/alioth-center/infrastructure/network/http"
@@ -15,6 +16,14 @@ func init() {
 			SetAllowMethods(http.POST).
 			SetNecessaryHeaders("Content-Type", "Authorization").
 			SetHandlerChain(api.NotifyApi.NotifyLark()).
+			Build(),
+	)
+
+	engine.AddEndPoints(
+		http.NewEndPointBuilder[any, json.RawMessage]().
+			SetRouter(http.NewRouter("/v1/callback")).
+			SetAllowMethods(http.POST, http.GET).
+			SetHandlerChain(api.CallbackApi.Callback()).
 			Build(),
 	)
 
