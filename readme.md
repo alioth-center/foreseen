@@ -3,7 +3,7 @@
 ![Go Version](https://img.shields.io/github/go-mod/go-version/alioth-center/foreseen)
 ![Release](https://img.shields.io/github/v/release/alioth-center/foreseen)
 ![Go Report Card](https://goreportcard.com/badge/github.com/alioth-center/foreseen)
-![GitHub Actions](https://img.shields.io/github/actions/workflow/status/alioth-center/foreseen/codecov.yaml?branch=main)
+![GitHub Actions](https://img.shields.io/github/actions/workflow/status/alioth-center/foreseen/build.yml?branch=main)
 ![License](https://img.shields.io/github/license/alioth-center/foreseen)
 
 Foreseen is a notification service that push messages to users/groups via various channels. It is designed to be a robust and flexible service that can be easily integrated into any application.
