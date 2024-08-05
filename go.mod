@@ -2,7 +2,7 @@ module github.com/alioth-center/foreseen
 
 go 1.22.4
 
-require github.com/alioth-center/infrastructure v1.2.17-0.20240711034625-ca177a869e89
+require github.com/alioth-center/infrastructure v1.2.17
 
 require (
 	github.com/bytedance/sonic v1.11.9 // indirect

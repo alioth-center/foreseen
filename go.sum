@@ -1,5 +1,7 @@
 github.com/alioth-center/infrastructure v1.2.17-0.20240711034625-ca177a869e89 h1:KuwNIEirzcEVVncsPRfq4WZuClejnbwxN2Gmzj83umk=
 github.com/alioth-center/infrastructure v1.2.17-0.20240711034625-ca177a869e89/go.mod h1:COquXjpMYcvYY1cP2Vw6j8ni4OMc45qZqJnnVHWJ0/w=
+github.com/alioth-center/infrastructure v1.2.17 h1:tQQJpekeiW0mg+BMWVEw7xJbkB1mhbJEmAmtmMPAblw=
+github.com/alioth-center/infrastructure v1.2.17/go.mod h1:COquXjpMYcvYY1cP2Vw6j8ni4OMc45qZqJnnVHWJ0/w=
 github.com/bytedance/sonic v1.11.9 h1:LFHENlIY/SLzDWverzdOvgMztTxcfcF+cqNsz9pK5zg=
 github.com/bytedance/sonic v1.11.9/go.mod h1:LysEHSvpvDySVdC2f87zGWf6CIKJcAvqab1ZaiQtds4=
 github.com/bytedance/sonic/loader v0.1.1 h1:c+e5Pt1k/cy5wMveRDyk2X4B9hF4g7an8N3zCYjJFNM=
