@@ -27,5 +27,5 @@ func init() {
 			Build(),
 	)
 
-	engine.ServeAsync("0.0.0.0:8881", make(chan struct{}))
+	engine.ServeAsync("0.0.0.0:8881", make(chan struct{}, 1))
 }
