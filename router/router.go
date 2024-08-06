@@ -14,7 +14,7 @@ func init() {
 		http.NewEndPointBuilder[*entity.LarkNotifyRequest, *entity.BaseResponse]().
 			SetRouter(http.NewRouter("/v1/notify/lark")).
 			SetAllowMethods(http.POST).
-			SetNecessaryHeaders("Content-Type", "Authorization").
+			SetNecessaryHeaders(http.HeaderContentType, http.HeaderAuthorization).
 			SetHandlerChain(api.NotifyApi.NotifyLark()).
 			Build(),
 	)
@@ -24,6 +24,29 @@ func init() {
 			SetRouter(http.NewRouter("/v1/callback")).
 			SetAllowMethods(http.POST, http.GET).
 			SetHandlerChain(api.CallbackApi.Callback()).
+			Build(),
+	)
+
+	engine.AddEndPoints(
+		http.NewEndPointBuilder[*entity.GetTemplateRequest, *entity.GetTemplateResponse]().
+			SetRouter(http.NewRouter("/v1/template/:template_name")).
+			SetAllowMethods(http.GET).
+			SetNecessaryHeaders(http.HeaderAuthorization).
+			SetNecessaryParams("template_name").
+			SetHandlerChain(api.TemplateApi.GetTemplate()).
+			Build(),
+		http.NewEndPointBuilder[*entity.CreateTemplateRequest, *entity.CreateTemplateResponse]().
+			SetRouter(http.NewRouter("/v1/template")).
+			SetAllowMethods(http.POST).
+			SetNecessaryHeaders(http.HeaderContentType, http.HeaderAuthorization).
+			SetHandlerChain(api.TemplateApi.CreateTemplate()).
+			Build(),
+		http.NewEndPointBuilder[*entity.GetTemplatePreviewRequest, *entity.GetTemplatePreviewResponse]().
+			SetRouter(http.NewRouter("/v1/template/:template_name/preview")).
+			SetAllowMethods(http.GET).
+			SetNecessaryHeaders(http.HeaderAuthorization).
+			SetNecessaryParams("template_name").
+			SetHandlerChain(api.TemplateApi.GetTemplatePreview()).
 			Build(),
 	)
 

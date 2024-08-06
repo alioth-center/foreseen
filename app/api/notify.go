@@ -13,5 +13,5 @@ type NotifyApiImpl struct {
 }
 
 func (impl NotifyApiImpl) NotifyLark() http.Chain[*entity.LarkNotifyRequest, *entity.BaseResponse] {
-	return http.NewChain[*entity.LarkNotifyRequest, *entity.BaseResponse](service.NotifySrvCheckToken[*entity.LarkNotifyRequest], impl.srv.NotifyLark)
+	return http.NewChain[*entity.LarkNotifyRequest, *entity.BaseResponse](service.CheckToken[*entity.LarkNotifyRequest], impl.srv.NotifyLark)
 }

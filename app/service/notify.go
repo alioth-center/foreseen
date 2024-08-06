@@ -70,12 +70,12 @@ func (srv *NotifyService) NotifyLark(ctx http.Context[*entity.LarkNotifyRequest,
 	logging.Info(logger.NewFields(ctx).WithBaseFields(baseField).WithMessage("lark notify request processed").WithData(response))
 }
 
-func NotifySrvCheckToken[req any](ctx http.Context[req, *entity.BaseResponse]) {
+func CheckToken[req any](ctx http.Context[req, *entity.BaseResponse]) {
 	token := strings.TrimPrefix(ctx.HeaderParams().GetString("Authorization"), "Bearer ")
 	if token != entity.GlobalConfig.Token {
 		ctx.Abort()
 		ctx.SetStatusCode(http.StatusUnauthorized)
-		ctx.SetResponse(&entity.BaseResponse{ErrorCode: 4011, ErrorMessage: "invalid authentication token"})
+		ctx.SetResponse(&entity.BaseResponse{ErrorCode: entity.ErrorCodeAuthorizationError, ErrorMessage: entity.ErrorMessageAuthorizationError})
 		return
 	}
 }

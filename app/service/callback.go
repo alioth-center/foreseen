@@ -10,7 +10,6 @@ import (
 
 func NewCallbackService() *CallbackService {
 	return &CallbackService{client: lark.NewClient(lark.Config{AppID: entity.GlobalConfig.AppID, AppSecret: entity.GlobalConfig.AppSecret})}
-
 }
 
 type CallbackService struct {
