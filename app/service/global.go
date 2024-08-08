@@ -2,10 +2,13 @@ package service
 
 import (
 	"github.com/alioth-center/foreseen/app/dao"
+	"github.com/alioth-center/foreseen/app/entity"
 	"github.com/alioth-center/foreseen/app/model"
 	"github.com/alioth-center/infrastructure/config"
 	"github.com/alioth-center/infrastructure/database/postgres"
 	"github.com/alioth-center/infrastructure/logger"
+	"github.com/alioth-center/infrastructure/utils/values"
+	"time"
 )
 
 var (
@@ -20,7 +23,13 @@ var (
 )
 
 func init() {
-	log = logger.Default()
+	log = logger.NewCustomLoggerWithOpts(
+		logger.WithCustomWriterOpts(
+			logger.NewTimeBasedRotationFileWriter(entity.GlobalConfig.LogDir, func(time time.Time) (filename string) {
+				return values.BuildStrings(time.Format("2006-01-02"), "_stdout.jsonl")
+			}),
+		),
+	)
 
 	databaseConfig := postgres.Config{}
 	loadErr := config.LoadConfigWithKeys(&databaseConfig, "./config/config.yaml", "database")

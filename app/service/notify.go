@@ -16,7 +16,7 @@ type NotifyService struct {
 }
 
 func (srv *NotifyService) NotifyLark(ctx http.Context[*entity.LarkNotifyRequest, *entity.BaseResponse]) {
-	logging.Info(logger.NewFields(ctx).WithBaseFields(baseField).WithMessage("processing lark notify request").WithData(ctx.Request()))
+	log.Info(logger.NewFields(ctx).WithMessage("processing lark notify request").WithData(ctx.Request()))
 
 	theme := lark.LarkMarkdownMessageThemeGrey
 	switch ctx.Request().Level {
@@ -66,5 +66,5 @@ func (srv *NotifyService) NotifyLark(ctx http.Context[*entity.LarkNotifyRequest,
 
 	ctx.SetStatusCode(http.StatusOK)
 	ctx.SetResponse(&entity.BaseResponse{Data: response})
-	logging.Info(logger.NewFields(ctx).WithBaseFields(baseField).WithMessage("lark notify request processed").WithData(response))
+	log.Info(logger.NewFields(ctx).WithMessage("lark notify request processed").WithData(response))
 }

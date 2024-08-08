@@ -18,7 +18,7 @@ type CallbackService struct {
 }
 
 func (srv *CallbackService) Callback(ctx http.Context[any, json.RawMessage]) {
-	logging.Info(logger.NewFields(ctx).WithMessage("callback received").WithData(ctx.Request()))
+	log.Info(logger.NewFields(ctx).WithMessage("callback received").WithData(ctx.Request()))
 
 	payload, _ := json.Marshal(ctx.Request())
 
