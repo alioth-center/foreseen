@@ -6,7 +6,7 @@
 ![GitHub Actions](https://img.shields.io/github/actions/workflow/status/alioth-center/foreseen/build.yml?branch=main)
 ![License](https://img.shields.io/github/license/alioth-center/foreseen)
 
-Foreseen is a notification service that push messages to users/groups via various channels. It is designed to be a robust and flexible service that can be easily integrated into any application.
+Foreseen is a notification service that pushes messages to users/groups via various channels. It is designed to be a robust and flexible service that can be easily integrated into any application.
 
 > AliothCenter Foreseen is an application powered by [alioth-center/infrastructure](github.com/alioth-center/infrastructure).
 
@@ -20,6 +20,13 @@ app_id: "YOUR_LARK_APP_ID"
 app_secret: "YOUR_LARK_APP_SECRET"
 token: "RANDOM_REQUEST_TOKEN"
 log_dir: "LOG_DIRECTORY"
+
+database:
+  host: 'postgres'
+  port: 5432
+  username: 'postgres'
+  password: 'password'
+  database: 'database_name'
 ```
 
 ### Run the service
@@ -50,6 +57,11 @@ services:
     volumes:
       - /path/to/config.yaml:/app/config.yaml
       - /path/to/log:/app/log
+    environment:
+      - AC_SERVICE=foreseen
+      - AC_EXTRA_FIELDS=app_env,app_version
+      - app_env=pre-release
+      - app_version=0.0.1
 ```
 
 
@@ -59,7 +71,7 @@ services:
 
 Foreseen supports sending messages to Lark/Feishu users and groups. To use this feature, you need to create a Lark app and get the `app_id` and `app_secret`.
 
-For further information, please refer to the [[WIP]Foreseen API Document](https://docs.alioth.center/foreseen-apis.html).
+For further information, please refer to the [Foreseen API Document](https://docs.alioth.center/foreseen-api.html).
 
 ## Contributors
 
