@@ -1,6 +1,8 @@
 package service
 
 import (
+	"time"
+
 	"github.com/alioth-center/foreseen/app/dao"
 	"github.com/alioth-center/foreseen/app/entity"
 	"github.com/alioth-center/foreseen/app/model"
@@ -8,7 +10,6 @@ import (
 	"github.com/alioth-center/infrastructure/database/postgres"
 	"github.com/alioth-center/infrastructure/logger"
 	"github.com/alioth-center/infrastructure/utils/values"
-	"time"
 )
 
 var (
