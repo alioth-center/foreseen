@@ -2,10 +2,7 @@ module github.com/alioth-center/foreseen
 
 go 1.22.4
 
-require (
-	github.com/alioth-center/infrastructure v1.2.17
-	gorm.io/gorm v1.25.10
-)
+require github.com/alioth-center/infrastructure v1.2.18-0.20240807024056-31227837bbad
 
 require (
 	github.com/bytedance/sonic v1.11.9 // indirect
@@ -48,5 +45,6 @@ require (
 	google.golang.org/protobuf v1.34.2 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	gorm.io/driver/postgres v1.5.9 // indirect
+	gorm.io/gorm v1.25.10 // indirect
 	modernc.org/mathutil v1.6.0 // indirect
 )

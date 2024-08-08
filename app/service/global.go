@@ -11,7 +11,8 @@ import (
 var (
 	log logger.Logger
 
-	templateDatabase *dao.TemplateDB
+	templateDatabase    *dao.TemplateDB
+	integrationDatabase *dao.IntegrationDB
 
 	syncModels = []any{
 		&model.Account{}, &model.Client{}, &model.Integration{}, &model.Task{}, &model.Template{}, &model.User{},
@@ -27,11 +28,11 @@ func init() {
 		panic("failed to load database config: " + loadErr.Error())
 	}
 
-	db, initDatabaseErr := postgres.NewPostgresDb(databaseConfig, syncModels...)
+	db, initDatabaseErr := postgres.NewPostgresSQLv2(databaseConfig, syncModels...)
 	if initDatabaseErr != nil {
 		panic("failed to initialize database: " + initDatabaseErr.Error())
 	}
 
-	gorm := db.ExtMethods().GetGorm()
-	templateDatabase = dao.NewTemplateDB(gorm)
+	templateDatabase = dao.NewTemplateDB(db)
+	integrationDatabase = dao.NewIntegrationDB(db)
 }

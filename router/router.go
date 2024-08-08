@@ -2,6 +2,7 @@ package router
 
 import (
 	"encoding/json"
+
 	"github.com/alioth-center/foreseen/app/api"
 	"github.com/alioth-center/foreseen/app/entity"
 	"github.com/alioth-center/infrastructure/network/http"
@@ -27,28 +28,9 @@ func init() {
 			Build(),
 	)
 
-	engine.AddEndPoints(
-		http.NewEndPointBuilder[*entity.GetTemplateRequest, *entity.GetTemplateResponse]().
-			SetRouter(http.NewRouter("/v1/template/:template_name")).
-			SetAllowMethods(http.GET).
-			SetNecessaryHeaders(http.HeaderAuthorization).
-			SetNecessaryParams("template_name").
-			SetHandlerChain(api.TemplateApi.GetTemplate()).
-			Build(),
-		http.NewEndPointBuilder[*entity.CreateTemplateRequest, *entity.CreateTemplateResponse]().
-			SetRouter(http.NewRouter("/v1/template")).
-			SetAllowMethods(http.POST).
-			SetNecessaryHeaders(http.HeaderContentType, http.HeaderAuthorization).
-			SetHandlerChain(api.TemplateApi.CreateTemplate()).
-			Build(),
-		http.NewEndPointBuilder[*entity.GetTemplatePreviewRequest, *entity.GetTemplatePreviewResponse]().
-			SetRouter(http.NewRouter("/v1/template/:template_name/preview")).
-			SetAllowMethods(http.GET).
-			SetNecessaryHeaders(http.HeaderAuthorization).
-			SetNecessaryParams("template_name").
-			SetHandlerChain(api.TemplateApi.GetTemplatePreview()).
-			Build(),
-	)
+	engine.AddEndPoints(TemplateApiRouterGroup...)
+
+	engine.AddEndPoints(IntegrationApiRouterGroup...)
 
 	engine.ServeAsync("0.0.0.0:8881", make(chan struct{}, 1))
 }

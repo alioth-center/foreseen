@@ -2,6 +2,7 @@ package service
 
 import (
 	"encoding/json"
+
 	"github.com/alioth-center/foreseen/app/entity"
 	"github.com/alioth-center/infrastructure/logger"
 	"github.com/alioth-center/infrastructure/network/http"

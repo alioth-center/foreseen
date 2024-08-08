@@ -1,9 +1,10 @@
 package service
 
 import (
+	"time"
+
 	"github.com/alioth-center/foreseen/app/entity"
 	"github.com/alioth-center/infrastructure/logger"
-	"time"
 )
 
 var (

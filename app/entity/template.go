@@ -2,6 +2,7 @@ package entity
 
 import (
 	"encoding/json"
+
 	"github.com/alioth-center/infrastructure/network/http"
 )
 
@@ -30,6 +31,27 @@ type CreateTemplateResult struct {
 }
 
 type CreateTemplateResponse = BaseResponse
+
+type UpdateTemplateRequest struct {
+	Content   string          `json:"content" vc:"key:content,required"`
+	Arguments json.RawMessage `json:"arguments,omitempty" vc:"key:arguments"`
+}
+
+type UpdateTemplateResult struct {
+	TemplateID int             `json:"template_id"`
+	Name       string          `json:"name"`
+	Content    string          `json:"content"`
+	Arguments  json.RawMessage `json:"arguments"`
+	Preview    string          `json:"preview"`
+}
+
+type UpdateTemplateResponse = BaseResponse
+
+type DeleteTemplateRequest = http.NoBody
+
+type DeleteTemplateResult = http.NoResponse
+
+type DeleteTemplateResponse = BaseResponse
 
 type GetTemplatePreviewRequest = json.RawMessage
 

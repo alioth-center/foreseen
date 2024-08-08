@@ -2,7 +2,7 @@ package model
 
 type Integration struct {
 	ID        int64  `gorm:"column:id;primaryKey;autoIncrement"`
-	Name      string `gorm:"column:name;type:varchar(255);notnull;uniqueIndex:idx_name"`
+	Name      string `gorm:"column:name;type:varchar(255);notnull;unique;uniqueIndex:idx_name"`
 	Secret1   string `gorm:"column:secret1;type:varchar(255)"`
 	Secret2   string `gorm:"column:secret2;type:varchar(255)"`
 	Secret3   string `gorm:"column:secret3;type:varchar(255)"`

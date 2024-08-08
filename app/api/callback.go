@@ -2,6 +2,7 @@ package api
 
 import (
 	"encoding/json"
+
 	"github.com/alioth-center/foreseen/app/service"
 	"github.com/alioth-center/infrastructure/network/http"
 )

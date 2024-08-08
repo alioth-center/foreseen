@@ -5,7 +5,6 @@ import (
 	"github.com/alioth-center/infrastructure/logger"
 	"github.com/alioth-center/infrastructure/network/http"
 	"github.com/alioth-center/infrastructure/thirdparty/lark"
-	"strings"
 )
 
 func NewNotifyService() *NotifyService {
@@ -19,7 +18,7 @@ type NotifyService struct {
 func (srv *NotifyService) NotifyLark(ctx http.Context[*entity.LarkNotifyRequest, *entity.BaseResponse]) {
 	logging.Info(logger.NewFields(ctx).WithBaseFields(baseField).WithMessage("processing lark notify request").WithData(ctx.Request()))
 
-	var theme = lark.LarkMarkdownMessageThemeGrey
+	theme := lark.LarkMarkdownMessageThemeGrey
 	switch ctx.Request().Level {
 	case "info":
 		theme = lark.LarkMarkdownMessageThemeBlue
@@ -68,14 +67,4 @@ func (srv *NotifyService) NotifyLark(ctx http.Context[*entity.LarkNotifyRequest,
 	ctx.SetStatusCode(http.StatusOK)
 	ctx.SetResponse(&entity.BaseResponse{Data: response})
 	logging.Info(logger.NewFields(ctx).WithBaseFields(baseField).WithMessage("lark notify request processed").WithData(response))
-}
-
-func CheckToken[req any](ctx http.Context[req, *entity.BaseResponse]) {
-	token := strings.TrimPrefix(ctx.HeaderParams().GetString("Authorization"), "Bearer ")
-	if token != entity.GlobalConfig.Token {
-		ctx.Abort()
-		ctx.SetStatusCode(http.StatusUnauthorized)
-		ctx.SetResponse(&entity.BaseResponse{ErrorCode: entity.ErrorCodeAuthorizationError, ErrorMessage: entity.ErrorMessageAuthorizationError})
-		return
-	}
 }

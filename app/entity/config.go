@@ -4,9 +4,7 @@ import (
 	"github.com/alioth-center/infrastructure/config"
 )
 
-var (
-	GlobalConfig Config
-)
+var GlobalConfig Config
 
 func init() {
 	err := config.LoadConfig(&GlobalConfig, "config/config.yaml")

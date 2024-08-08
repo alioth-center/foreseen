@@ -6,4 +6,5 @@ func init() {
 	NotifyApi = NotifyApiImpl{srv: service.NewNotifyService()}
 	CallbackApi = CallbackApiImpl{srv: service.NewCallbackService()}
 	TemplateApi = TemplateApiImpl{srv: service.NewTemplateService()}
+	IntegrationApi = IntegrationApiImpl{srv: service.NewIntegrationService()}
 }
