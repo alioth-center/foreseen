@@ -12,3 +12,9 @@ config/config.yaml
 
 # Git diff
 *.diff
+
+# Coverage File
+coverage.txt
+
+# Local Deploy Docker Compose File
+docker-compose.yaml
